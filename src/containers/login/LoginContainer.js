@@ -1,52 +1,58 @@
 import React, { Component } from 'react';
-
+import { Router, Link } from '@reach/router';
+//Components
+import { LoginForm } from './components/LoginForm';
+import { TestRoute } from '../_tests/Test02';
 //Redux
 import { connect } from 'react-redux';
-// import { logIn, logOut } from '../../redux/actions/admin_actions.js';
+import { logIn, logOut } from '../../redux/actions/admin_actions.js';
 
 class LoginContainer extends Component {
-    constructor({ admin }) {
-        super()
-        this.userLogIn = this.userLogIn.bind(this);
-        this.userLogOut = this.userLogOut.bind(this);
-    }
+  constructor({ admin }) {
+    super();
+    this.userLogIn = this.userLogIn.bind(this);
+    this.userLogOut = this.userLogOut.bind(this);
+  }
 
-    userLogIn() {
-        console.log('Button clicked!', 'User logging in!');
-    }
+  userLogIn() {
+    console.log('Button clicked!', 'User logging in!');
+    this.props.dispatch(
+      logIn({
+        user: 'detec.azul@gmail.com',
+        password: '12345678910'
+      })
+    );
+  }
 
-    userLogOut() {
-        console.log('Button clicked!', 'User logging out!');
-    }
+  userLogOut() {
+    console.log('Button clicked!', 'User logging out!');
+  }
 
-    checkIfLoggedIn(admin) {
-        if (admin.connected) {
-            return <p>Admin: {admin.user}</p>
-        } else {
-            return <p>Nobody is logged in</p>
-        }
-    }
+  checkIfLoggedIn(admin) {
+    return admin.connected;
+  }
 
-    render() {
-        let status = this.checkIfLoggedIn(this.props.admin)
-
-        return(
-            <div className="login-container">
-                <p>Hello from login-container</p>
-                { status }
-            </div>
-        );
+  additionalRoutes() {
+    if (this.checkIfLoggedIn(this.props.admin)) {
+    //   return <TestRoute path="/:routeId" />;
     }
+  }
+
+  render() {
+    return (
+      <Router>
+        <LoginForm userLogIn={this.userLogIn} path="/" />
+        {/* {this.additionalRoutes()} */}
+      </Router>
+    );
+  }
 }
 
-
 const mapStateToProps = state => {
-    return {
-        admin: state.admin
-    };
+  return {
+    admin: state.admin
+  };
 };
 
-LoginContainer = connect(
-    mapStateToProps
-)(LoginContainer);
+LoginContainer = connect(mapStateToProps)(LoginContainer);
 export default LoginContainer;
