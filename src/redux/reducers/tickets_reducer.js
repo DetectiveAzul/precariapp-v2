@@ -1,8 +1,8 @@
 import {
 	ADD_TICKET,
-} from '../actions/ticket_actions.js';
+} from '../actions/tickets_actions.js';
 
-function ticket(state = [], action) {
+function tickets(state = [], action) {
 	switch (action.type) {
 	case ADD_TICKET:
 		return [...state, action.ticket];
@@ -11,4 +11,4 @@ function ticket(state = [], action) {
 	}
 }
 
-export default ticket;
+export default tickets;

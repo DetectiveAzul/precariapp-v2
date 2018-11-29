@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
-import ticket from './ticket_reducer.js';
+import tickets from './tickets_reducer.js';
 import admin from './admin_reducer.js';
 
 const precariApp = combineReducers({
     admin,
-    ticket,
+    tickets,
 });
 
 export default precariApp;
