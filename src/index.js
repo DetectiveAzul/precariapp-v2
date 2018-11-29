@@ -5,7 +5,7 @@ import App from './App';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import logger from 'redux-logger';
-import precariApp from './redux/reducers/reducers.js';
+import precariApp from './redux/reducers/_reducers.js';
 
 const store = createStore(
 	precariApp,
