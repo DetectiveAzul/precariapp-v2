@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import { Router, Link } from '@reach/router';
+import { Router } from '@reach/router';
 //Components
 import { LoginForm } from './components/LoginForm';
-import { TestRoute } from '../_tests/Test02';
 //Redux
 import { connect } from 'react-redux';
-import { logIn, logOut } from '../../redux/actions/admin_actions.js';
+// import { logIn } from '../../redux/actions/admin_actions.js';
 
 class LoginContainer extends Component {
   constructor({ admin }) {
@@ -14,14 +13,9 @@ class LoginContainer extends Component {
     this.userLogOut = this.userLogOut.bind(this);
   }
 
-  userLogIn() {
+  userLogIn(event) {
+    event.preventDefault();
     console.log('Button clicked!', 'User logging in!');
-    this.props.dispatch(
-      logIn({
-        user: 'detec.azul@gmail.com',
-        password: '12345678910'
-      })
-    );
   }
 
   userLogOut() {
@@ -32,18 +26,11 @@ class LoginContainer extends Component {
     return admin.connected;
   }
 
-  additionalRoutes() {
-    if (this.checkIfLoggedIn(this.props.admin)) {
-    //   return <TestRoute path="/:routeId" />;
-    }
-  }
-
   render() {
     return (
-      <Router>
-        <LoginForm userLogIn={this.userLogIn} path="/" />
-        {/* {this.additionalRoutes()} */}
-      </Router>
+      <LoginForm 
+        userLogIn={this.userLogIn}
+      />
     );
   }
 }
