@@ -19,17 +19,26 @@ class TestContainer extends Component {
     };
 
     render() {
-        return(
+        if (this.props.admin.connected) {
+            return(
             <div className="TestContainer">
                 <button onClick={this.addMockTicket}> Click to Add Test Ticket </button>
                 <TicketListTest00 tickets={this.props.tickets} />
             </div>
-        );
+            )
+        } else {
+            return(
+            <div className="TestContainer">
+                <p>You don't have permission to see this!</p>
+            </div>
+            );
+        }
     }
 };
 
 const mapStateToProps = state => {
     return {
+        admin: state.admin,
         tickets: state.tickets
     };
 };

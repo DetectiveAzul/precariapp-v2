@@ -3,12 +3,23 @@ import {
 	LOG_OUT
 } from '../actions/admin_actions.js';
 
-function admin(state = [], action) {
+const defaultState = {
+	connected: false,
+	user: undefined
+}
+
+function admin(state = defaultState, action) {
 	switch (action.type) {
 	case LOG_IN:
-		return state;
+		return {
+			connected: true,
+			user: action.credentials.user,
+		}
 	case LOG_OUT:
-		return state;
+		return {
+			connected: false,
+			user: undefined,
+		}
 	default:
 		return state;
 	}
