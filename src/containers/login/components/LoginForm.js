@@ -1,25 +1,46 @@
 import React from 'react';
 import styled from 'styled-components';
 import logo from './img/logo.png';
+import background from './img/login-background.jpg';
 
+//SuperCardDiv contains PrecariaLogo and FormDiv
 const SuperCardDiv = styled.div`
     display: flex;
     justify-content: center;
-    flex-wrap: overflow;
+    align-items: center;
+    height: 100vh;
+    background-image: url(${background});
+    background-position: center;
+    font-family: Roboto;
 `
+
+const SubCardDiv = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: rgb(255,250,250, 0.75);
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+    padding: 5px 15px;
+`
+
+const PrecariaLogo = styled.img`
+    width: 300px;
+    height: 300px;
+`
+
+//FormDiv contains Header, Label, User and Password Field and LogInButton
 const FormDiv = styled.form`
     display: flex;
+    flex: 0.5;
+    min-width: 300px;
     flex-direction: column;
-    align-items: center;
     margin-left: 20px;
     padding-top: 10px;
     padding-bottom: 10px;
+    align-items: center;
 `;
 
-const PrecariaLogo = styled.img`
-
-`
-
+//Childs of FormDiv
 const PrecariaHeader = styled.h1`
 `
 
@@ -40,36 +61,38 @@ const PasswordField = styled.input`
     font-size: 20px;
 `;
 const LogInButton = styled.input`
-    width: 30%;
+    width: 100px;
     font-size: 20px;
 `
 
 export const LoginForm = ({userLogIn}) => {
     return(
         <SuperCardDiv className="full-body-container">
-            <PrecariaLogo 
-                src={logo}
-            />
-            <FormDiv className="login-form" onSubmit={userLogIn}>
-                <PrecariaHeader className="form-header">PrecariApp</PrecariaHeader>
-                <FieldLabel className="user-label">Email</FieldLabel>
-                <UserField 
-                    type="email"
-                    className="user-field" 
-                    placeholder="e.g., youremail@domain.co.uk"
+            <SubCardDiv>
+                <PrecariaLogo 
+                    src={logo}
                 />
-                <FieldLabel className="password-label">Password</FieldLabel>
-                <PasswordField 
-                    type="password"
-                    className="password-field"
-                    placeholder="e.g., ************"
-                />
-                <LogInButton 
-                    type="submit"
-                    className="login-button"
-                    value="Log In"
-                />
-            </FormDiv>
+                <FormDiv className="login-form" onSubmit={userLogIn}>
+                    <PrecariaHeader className="form-header">PrecariApp</PrecariaHeader>
+                    <FieldLabel className="user-label">Email</FieldLabel>
+                    <UserField 
+                        type="email"
+                        className="user-field" 
+                        placeholder="e.g., youremail@domain.co.uk"
+                    />
+                    <FieldLabel className="password-label">Password</FieldLabel>
+                    <PasswordField 
+                        type="password"
+                        className="password-field"
+                        placeholder="e.g., ************"
+                    />
+                    <LogInButton 
+                        type="submit"
+                        className="login-button"
+                        value="Log In"
+                    />
+                </FormDiv>
+            </SubCardDiv>
         </SuperCardDiv>
     )
 }
