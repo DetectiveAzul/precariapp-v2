@@ -23,7 +23,13 @@ class LoginContainer extends Component {
   }
 
   setCookies(credentials) {
-    this.props.cookies.set('user', credentials.user, { path: '/' })
+    this.props.cookies.set('user', credentials.user, { path: '/', expires: this.setExpirationDate() });
+  }
+
+  setExpirationDate() {
+    const date = new Date();
+    date.setTime(date.getTime() + 24*60*60*1000); // in milliseconds
+    return date;
   }
 
   render() {
