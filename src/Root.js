@@ -26,7 +26,7 @@ class Root extends Component {
   render() {
     switch (this.props.admin.connected) {
       case true:
-        return <App />;
+        return <App cookies={this.props.cookies} />;
       default:
         return <LoginContainer cookies={this.props.cookies} />
     }
