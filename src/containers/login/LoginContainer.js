@@ -4,26 +4,26 @@ import React, { Component } from 'react';
 import { LoginForm } from './components/LoginForm';
 //Redux
 import { connect } from 'react-redux';
-// import { logIn } from '../../redux/actions/admin_actions.js';
+import { logIn } from '../../redux/actions/admin_actions.js';
 
 class LoginContainer extends Component {
-  constructor({ admin }) {
+  constructor({ admin, dispatch, cookies }) {
     super();
     this.userLogIn = this.userLogIn.bind(this);
-    this.userLogOut = this.userLogOut.bind(this);
   }
 
   userLogIn(event) {
     event.preventDefault();
-    console.log('Button clicked!', 'User logging in!');
+    const testCredentials = {
+      user: "detec.azul@gmail.com",
+      password: "12345678910"
+    }
+    this.setCookies(testCredentials);
+    this.props.dispatch(logIn(testCredentials));
   }
 
-  userLogOut() {
-    console.log('Button clicked!', 'User logging out!');
-  }
-
-  checkIfLoggedIn(admin) {
-    return admin.connected;
+  setCookies(credentials) {
+    this.props.cookies.set('user', credentials.user, { path: '/' })
   }
 
   render() {
@@ -35,9 +35,10 @@ class LoginContainer extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   return {
-    admin: state.admin
+    admin: state.admin,
+    cookies: ownProps.cookies
   };
 };
 

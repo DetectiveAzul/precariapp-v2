@@ -14,7 +14,6 @@ class Test01Container extends Component {
     }
 
     mockLogIn() {
-        console.log('button logIn clicked!');
         this.props.dispatch(logIn({
             user: "detec.azul@gmail.com",
             password: "12345678910"
@@ -22,7 +21,6 @@ class Test01Container extends Component {
     }
 
     mockLogOut() {
-        console.log('button logOut clicked!')
         this.props.dispatch(logOut("detec.azul@gmail.com"));
     }
 
