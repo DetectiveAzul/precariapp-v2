@@ -6,12 +6,8 @@ import { connect } from 'react-redux';
 import { initialTicketLoad } from '../../helpers/apiCalls';
 
 class DashboardContainer extends Component {
-
     render() {
-        return <button onClick={() => { 
-            initialTicketLoad(this.props.token) 
-                .then((res) => console.log(res))
-            }} >Load tickets</button>
+        return <h1>Dashboard</h1>
     }
 }
 
