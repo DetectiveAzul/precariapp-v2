@@ -32,14 +32,6 @@ class Nav extends Component {
                     path="/"
                     name="Dashboard"
                 />
-                <NavLink 
-                    path="/customers"
-                    name="Customers"
-                />
-                <NavLink
-                    path="/cases" 
-                    name="My Cases"
-                />
                 <LogOutButton onClick={this.userLoggingOut} />
             </nav>
         );
