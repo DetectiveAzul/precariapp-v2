@@ -5,6 +5,7 @@ import { LoginForm } from './components/LoginForm';
 //Redux
 import { connect } from 'react-redux';
 import { logIn, authFail } from '../../redux/actions/admin_actions';
+import { addToken } from '../../redux/actions/token_actions';
 //Helpers
 import { postLogIn } from '../../helpers/apiCalls';
 
@@ -24,6 +25,7 @@ class LoginContainer extends Component {
       if (res.status === 'success') {
         this.setCookies(credentials, res.token);
         this.props.dispatch(logIn(credentials));
+        this.props.dispatch(addToken(res.token));
       } else {
         this.props.dispatch(authFail());
       }

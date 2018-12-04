@@ -10,7 +10,7 @@ class App extends Component {
             <div className="App">
                 <NavContainer cookies={this.props.cookies} />
                 <Router>   
-                    <DashboardContainer path="/" cookies={this.props.cookies}/>
+                    <DashboardContainer path="/"/>
                 </Router>
             </div>
         );

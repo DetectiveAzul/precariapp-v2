@@ -7,7 +7,8 @@ import {
 const defaultState = {
 	connected: false,
 	admin: undefined,
-	authfail: false
+	authfail: false,
+	token: undefined
 }
 
 function admin(state = defaultState, action) {
@@ -16,19 +17,22 @@ function admin(state = defaultState, action) {
 		return {
 			connected: true,
 			admin: action.credentials.email,
-			authfail: false
+			authfail: false,
+			token: undefined
 		}
 	case LOG_OUT:
 		return {
 			connected: false,
 			admin: undefined,
-			authfail: false
+			authfail: false,
+			token: undefined, 
 		}
 	case AUTH_FAIL:
 		return {
 			connected: false,
 			admin: undefined,
-			authfail: true
+			authfail: true,
+			token: undefined
 		}
 	default:
 		return state;

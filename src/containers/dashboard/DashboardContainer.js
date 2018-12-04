@@ -9,16 +9,16 @@ class DashboardContainer extends Component {
 
     render() {
         return <button onClick={() => { 
-            initialTicketLoad(this.props.cookies.get('session')) 
+            initialTicketLoad(this.props.token) 
                 .then((res) => console.log(res))
             }} >Load tickets</button>
     }
 }
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
     return {
+      token: state.token,
       tickets: state.tickets,
-      cookies: ownProps.cookies
     };
   };
   

@@ -89,6 +89,7 @@ export const LoginForm = ({userLogIn, failed}) => {
                     <PrecariaHeader className="form-header">PrecariApp</PrecariaHeader>
                     <FieldLabel className="user-label">Email</FieldLabel>
                     <UserField 
+                        required
                         type="email"
                         name="email"
                         className="user-field" 

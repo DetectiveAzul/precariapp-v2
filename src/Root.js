@@ -5,6 +5,7 @@ import App from './App';
 //Redux
 import { connect } from 'react-redux';
 import { logIn } from './redux/actions/admin_actions';
+import { addToken } from './redux/actions/token_actions';
 
 //Cookies
 import { withCookies } from 'react-cookie';
@@ -23,6 +24,7 @@ class Root extends Component {
           email: admin
         })
       );
+      this.props.dispatch(addToken(session));
     }
   }
 

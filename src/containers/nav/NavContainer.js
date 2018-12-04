@@ -5,6 +5,7 @@ import LogOutButton from './components/LogOutButton';
 //Redux
 import { connect } from 'react-redux';
 import { logOut } from '../../redux/actions/admin_actions';
+import { removeToken } from '../../redux/actions/token_actions';
 
 class Nav extends Component {
     constructor() {
@@ -15,6 +16,7 @@ class Nav extends Component {
     userLoggingOut() {
         this.resetCookies();
         this.props.dispatch(logOut(this.props.admin));
+        this.props.dispatch(removeToken());
         
     }
 

@@ -13,7 +13,6 @@ export const postLogIn = async (credentials) => {
 };
 
 export const initialTicketLoad = async (token) => {
-    console.log(token)
     return fetch(localhostServer + ticketEndPoint, {
         method: 'GET',
         headers: {
