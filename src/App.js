@@ -2,14 +2,16 @@ import React, { Component } from 'react';
 import { Router } from '@reach/router'
 //Components
 import NavContainer from './containers/nav/NavContainer';
+import DashboardContainer from './containers/dashboard/DashboardContainer';
 
 class App extends Component {
     render() {
         return(
             <div className="App">
                 <NavContainer cookies={this.props.cookies} />
-                {/* <Router>   
-                </Router> */}
+                <Router>   
+                    <DashboardContainer path="/" cookies={this.props.cookies}/>
+                </Router>
             </div>
         );
     }

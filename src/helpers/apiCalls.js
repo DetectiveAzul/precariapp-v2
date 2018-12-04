@@ -1,4 +1,4 @@
-import { localhostServer, loginEndPoint } from './url';
+import { localhostServer, loginEndPoint, ticketEndPoint } from './url';
 
 
 export const postLogIn = async (credentials) => {
@@ -10,6 +10,18 @@ export const postLogIn = async (credentials) => {
         headers: { 'Content-Type': 'application/json' }
     })
         .then((response) => response.json());
+};
+
+export const initialTicketLoad = async (token) => {
+    console.log(token)
+    return fetch(localhostServer + ticketEndPoint, {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    })
+        .then((response) => response.json());
+
 };
 
 
