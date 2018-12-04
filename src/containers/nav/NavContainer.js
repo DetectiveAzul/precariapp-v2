@@ -19,23 +19,24 @@ class Nav extends Component {
     }
 
     resetCookies() {
-        this.props.cookies.remove('user');
+        this.props.cookies.remove('admin');
+        this.props.cookies.remove('session');
     }
 
     render() {
         return(
             <nav>
                 <NavLink 
-                    path="/test"
-                    name="Test 1"
+                    path="/"
+                    name="Dashboard"
                 />
                 <NavLink 
-                    path="/test2"
-                    name="Test 2"
+                    path="/customers"
+                    name="Customers"
                 />
                 <NavLink
-                    path="/test3" 
-                    name="Test 3"
+                    path="/cases" 
+                    name="My Cases"
                 />
                 <LogOutButton onClick={this.userLoggingOut} />
             </nav>

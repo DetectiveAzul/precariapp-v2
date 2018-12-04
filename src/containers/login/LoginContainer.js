@@ -4,7 +4,9 @@ import React, { Component } from 'react';
 import { LoginForm } from './components/LoginForm';
 //Redux
 import { connect } from 'react-redux';
-import { logIn } from '../../redux/actions/admin_actions.js';
+import { logIn } from '../../redux/actions/admin_actions';
+//Helpers
+import { postLogIn } from '../../helpers/apiCalls';
 
 class LoginContainer extends Component {
   constructor({ admin, dispatch, cookies }) {
@@ -14,30 +16,40 @@ class LoginContainer extends Component {
 
   userLogIn(event) {
     event.preventDefault();
-    const testCredentials = {
-      user: "detec.azul@gmail.com",
-      password: "12345678910"
-    }
-    this.setCookies(testCredentials);
-    this.props.dispatch(logIn(testCredentials));
+    const credentials = {
+      email: event.target.email.value,
+      password: event.target.password.value
+    };
+    postLogIn(credentials).then(res => {
+      if (res.status === 'success') {
+        console.log('User logged!');
+        this.setCookies(credentials, res.token);
+        this.props.dispatch(logIn(credentials));
+      } else {
+        console.log('User failed to authentificate!');
+      }
+    });
   }
 
-  setCookies(credentials) {
-    this.props.cookies.set('user', credentials.user, { path: '/', expires: this.setExpirationDate() });
+  setCookies(credentials, session) {
+    this.props.cookies.set('admin', credentials.email, {
+      path: '/',
+      expires: this.setExpirationDate()
+    });
+    this.props.cookies.set('session', session, {
+      path: '/',
+      expires: this.setExpirationDate()
+    });
   }
 
   setExpirationDate() {
     const date = new Date();
-    date.setTime(date.getTime() + 24*60*60*1000); // in milliseconds
+    date.setTime(date.getTime() + 24 * 60 * 60 * 1000); // in milliseconds
     return date;
   }
 
   render() {
-    return (
-      <LoginForm 
-        userLogIn={this.userLogIn}
-      />
-    );
+    return <LoginForm userLogIn={this.userLogIn} />;
   }
 }
 

@@ -77,12 +77,15 @@ export const LoginForm = ({userLogIn}) => {
                     <FieldLabel className="user-label">Email</FieldLabel>
                     <UserField 
                         type="email"
+                        name="email"
                         className="user-field" 
                         placeholder="e.g., youremail@domain.co.uk"
                     />
                     <FieldLabel className="password-label">Password</FieldLabel>
                     <PasswordField 
+                        required
                         type="password"
+                        name="password"
                         className="password-field"
                         placeholder="e.g., ************"
                     />

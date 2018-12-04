@@ -5,7 +5,7 @@ import {
 
 const defaultState = {
 	connected: false,
-	user: undefined
+	admin: undefined
 }
 
 function admin(state = defaultState, action) {
@@ -13,12 +13,12 @@ function admin(state = defaultState, action) {
 	case LOG_IN:
 		return {
 			connected: true,
-			user: action.credentials.user,
+			admin: action.credentials.email,
 		}
 	case LOG_OUT:
 		return {
 			connected: false,
-			user: undefined,
+			admin: undefined,
 		}
 	default:
 		return state;

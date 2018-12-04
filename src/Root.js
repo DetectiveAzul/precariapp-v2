@@ -15,12 +15,15 @@ class Root extends Component {
   }
 
   checkIfSessionIsActive() {
-    if (this.props.cookies.get('user')) {
-      this.props.dispatch(logIn({
-        user: "detec.azul@gmail.com",
-        password: "12345678910"
-      }));
-    };
+    const admin = this.props.cookies.get('admin');
+    const session = this.props.cookies.get('session');
+    if (admin && session) {
+      this.props.dispatch(
+        logIn({
+          email: admin
+        })
+      );
+    }
   }
 
   render() {
@@ -28,7 +31,7 @@ class Root extends Component {
       case true:
         return <App cookies={this.props.cookies} />;
       default:
-        return <LoginContainer cookies={this.props.cookies} />
+        return <LoginContainer cookies={this.props.cookies} />;
     }
   }
 }
