@@ -4,12 +4,12 @@ import React, { Component } from 'react';
 import { LoginForm } from './components/LoginForm';
 //Redux
 import { connect } from 'react-redux';
-import { logIn } from '../../redux/actions/admin_actions';
+import { logIn, authFail } from '../../redux/actions/admin_actions';
 //Helpers
 import { postLogIn } from '../../helpers/apiCalls';
 
 class LoginContainer extends Component {
-  constructor({ admin, dispatch, cookies }) {
+  constructor({ admin, dispatch, cookies, failed }) {
     super();
     this.userLogIn = this.userLogIn.bind(this);
   }
@@ -22,11 +22,10 @@ class LoginContainer extends Component {
     };
     postLogIn(credentials).then(res => {
       if (res.status === 'success') {
-        console.log('User logged!');
         this.setCookies(credentials, res.token);
         this.props.dispatch(logIn(credentials));
       } else {
-        console.log('User failed to authentificate!');
+        this.props.dispatch(authFail());
       }
     });
   }
@@ -49,13 +48,14 @@ class LoginContainer extends Component {
   }
 
   render() {
-    return <LoginForm userLogIn={this.userLogIn} />;
+    return <LoginForm userLogIn={this.userLogIn} failed={this.props.failed} />;
   }
 }
 
 const mapStateToProps = (state, ownProps) => {
   return {
     admin: state.admin,
+    failed: state.admin.authfail,
     cookies: ownProps.cookies
   };
 };

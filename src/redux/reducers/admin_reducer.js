@@ -1,11 +1,13 @@
 import {
 	LOG_IN,
-	LOG_OUT
+	LOG_OUT,
+	AUTH_FAIL
 } from '../actions/admin_actions.js';
 
 const defaultState = {
 	connected: false,
-	admin: undefined
+	admin: undefined,
+	authfail: false
 }
 
 function admin(state = defaultState, action) {
@@ -14,11 +16,19 @@ function admin(state = defaultState, action) {
 		return {
 			connected: true,
 			admin: action.credentials.email,
+			authfail: false
 		}
 	case LOG_OUT:
 		return {
 			connected: false,
 			admin: undefined,
+			authfail: false
+		}
+	case AUTH_FAIL:
+		return {
+			connected: false,
+			admin: undefined,
+			authfail: true
 		}
 	default:
 		return state;

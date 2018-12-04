@@ -50,6 +50,15 @@ const FieldLabel = styled.label`
     margin-bottom: 5px;
 `
 
+const ErrorLabel = styled.label`
+    font-size: 15px;
+    font-style: italic;
+    text-align: right;
+    width: 95%;
+    margin-bottom: 5px;
+    color: red;
+`
+
 const UserField = styled.input`
     width: 95%;
     margin-bottom: 10px;
@@ -65,7 +74,11 @@ const LogInButton = styled.input`
     font-size: 20px;
 `
 
-export const LoginForm = ({userLogIn}) => {
+export const LoginForm = ({userLogIn, failed}) => {
+    const checkIfError = () => {
+        if (failed) return <ErrorLabel>User or Email not recognised</ErrorLabel>;
+    }
+
     return(
         <SuperCardDiv className="full-body-container">
             <SubCardDiv>
@@ -82,6 +95,7 @@ export const LoginForm = ({userLogIn}) => {
                         placeholder="e.g., youremail@domain.co.uk"
                     />
                     <FieldLabel className="password-label">Password</FieldLabel>
+                    { checkIfError() }
                     <PasswordField 
                         required
                         type="password"
