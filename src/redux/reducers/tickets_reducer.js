@@ -8,7 +8,7 @@ function tickets(state = [], action) {
 	case ADD_TICKET:
 		return [...state, action.ticket];
 	case LOAD_TICKETS:
-		return [action.tickets];
+		return [...action.tickets];
 	default:
 		return state;
 	}
