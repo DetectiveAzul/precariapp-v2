@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 //Components
-import NavLink from './components/NavLink';
-import LogOutButton from './components/LogOutButton';
+import NavBar from './components/NavBar';
 //Redux
 import { connect } from 'react-redux';
 import { logOut } from '../../redux/actions/admin_actions';
@@ -27,13 +26,7 @@ class Nav extends Component {
 
     render() {
         return(
-            <nav>
-                <NavLink 
-                    path="/"
-                    name="Dashboard"
-                />
-                <LogOutButton onClick={this.userLoggingOut} />
-            </nav>
+            <NavBar userLoggingOut={this.userLoggingOut} />
         );
     }
 }
