@@ -4,9 +4,9 @@ import styled from 'styled-components';
 let Row = styled.div`
     display: flex;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.25);
-    padding: 10px 5px;
+    padding: 7px 5px;
     margin: 0px 5px;
-    font-size: 15px;
+    font-size: 12px;
 
     &:hover {
         background-color: rgba(255,255,255, 1);

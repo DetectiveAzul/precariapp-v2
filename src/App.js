@@ -8,10 +8,12 @@ import background from './img/login-background.jpg';
 
 const GlobalCSSContainer = styled.div`
     height: 100vh;
+    padding: 10px;
     font-family: Roboto;
     box-sizing: border-box;
     background-image: url(${background});
     background-position: center;
+    min-width: 600px;
 `
 
 class App extends Component {
