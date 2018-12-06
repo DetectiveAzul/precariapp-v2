@@ -21,10 +21,7 @@ class DashboardContainer extends Component {
 
     render() {
         return(
-            <div>
-                <h1>Dashboard</h1>
-                <TicketList tickets= {this.props.tickets} />
-            </div>
+            <TicketList tickets= {this.props.tickets} />
         )
     }
 }

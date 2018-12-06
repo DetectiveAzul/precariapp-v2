@@ -1,29 +1,35 @@
 import React from 'react';
 //Component
+import TicketListHeader from './TicketListHeader';
 import TicketElement from './TicketElement';
 
 const TicketList = ({tickets}) => {
     const renderTicketElement = (tickets) => { 
         return tickets.map((ticket, index) => {
+            const odd = (index % 2 === 0)
             return(
                 <TicketElement 
                     key={index}
-                    subject={ticket.subject}
-                    assigned={ticket.assigned}
-                    customer={ticket.customer}
+                    odd={odd}
                     reference={ticket.reference}
+                    opened={ticket.opened}
+                    solicitor={ticket.solicitor}
+                    subject={ticket.subject}
+                    category={ticket.category}
+                    assigned={ticket.assigned}
+                    lastUpdate={ticket.lastUpdate}
                  />
             )
         })
     }
     return(
         <div>
-            <h2>Ticket List</h2>
-            { renderTicketElement(tickets) }
+        <TicketListHeader />
+        {
+            renderTicketElement(tickets)
+        }
         </div>
-        
-
-    )
+        )
 };
 
 export default TicketList;
