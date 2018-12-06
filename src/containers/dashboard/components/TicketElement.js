@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { navigate } from '@reach/router';
 
 let Row = styled.div`
     display: flex;
@@ -29,15 +30,18 @@ const MediumCell = styled.div`
 
 const TicketElement = ({odd, reference, opened, solicitor, subject, category, assigned, lastUpdate}) => {
     return(
-        <Row odd={odd} className="ticket-row">
-        <SmallCell className="reference-cell">{reference}</SmallCell>
-        <SmallCell className="date-opened-cell">{opened}</SmallCell>
-        <MediumCell className="solicitor-cell">{solicitor}</MediumCell>
-        <MediumCell className="subject-cell">{subject}</MediumCell>
-        <MediumCell className="category-cell">{category}</MediumCell>
-        <MediumCell className="category-cell">{assigned}</MediumCell>
-        <SmallCell className="date-last-cell">{lastUpdate}</SmallCell>
-    </Row>
+        <Row 
+            onClick={() => { navigate(`/ticket/${reference}`)}} 
+            odd={odd} className="ticket-row"
+        >
+            <SmallCell className="reference-cell">{reference}</SmallCell>
+            <SmallCell className="date-opened-cell">{opened}</SmallCell>
+            <MediumCell className="solicitor-cell">{solicitor}</MediumCell>
+            <MediumCell className="subject-cell">{subject}</MediumCell>
+            <MediumCell className="category-cell">{category}</MediumCell>
+            <MediumCell className="category-cell">{assigned}</MediumCell>
+            <SmallCell className="date-last-cell">{lastUpdate}</SmallCell>
+        </Row>
     )
 }
 
