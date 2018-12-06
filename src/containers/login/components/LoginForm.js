@@ -5,6 +5,7 @@ import background from '../../../img/login-background.jpg'
 
 //SuperCardDiv contains PrecariaLogo and FormDiv
 const SuperCardDiv = styled.div`
+    font-family: Roboto;
     display: flex;
     justify-content: center;
     align-items: center;
