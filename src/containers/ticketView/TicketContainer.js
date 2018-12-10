@@ -40,7 +40,7 @@ class TicketContainer extends Component {
             text: event.target.update.value
         }
         //Adding the update
-        const newTicket = Object.assign({lastUpdate: dateGrabber()}, this.props.ticket);
+        const newTicket = Object.assign({}, this.props.ticket, {lastUpdate: dateGrabber()});
         newTicket.updates.push(newUpdate);
         //Api call
         updateTicket(this.props.token, newTicket)
