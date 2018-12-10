@@ -8,6 +8,6 @@ export function loadTicket(ticket) {
 	return { type: LOAD_TICKET, ticket: ticket };
 }
 
-export function loadTickets() {
+export function removeTicket() {
 	return { type: REMOVE_TICKET };
 }
