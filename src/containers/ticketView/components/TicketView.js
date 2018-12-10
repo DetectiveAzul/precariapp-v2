@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 //Components
 import TextEditor from './TextEditor';
+import TicketUpdateList from './TicketUpdateList';
 
 //Styles
 const ViewContainer = styled.div`
@@ -23,7 +24,7 @@ const InfoContainer = styled.div`
 const CurrentStatusContainer = styled.div`
     flex: 1.5;
     display: flex;
-    flex-wrap: wrap-reverse;
+    flex-wrap: wrap;
     min-width: 550px;
 `;
 
@@ -37,16 +38,7 @@ const TextEditorContainer = styled.div`
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
 `;
 
-const UpdatesContainer = styled.div`
-    flex: 1;
-    min-width: 275px;
-    margin: 5px;
-    background-color: rgb(255,250,250, 0.75);
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
-    overflow: scroll;
-`;
-
-const TicketView = ({ticket}) => {
+const TicketView = ({ticket, onSubmitUpdateForm }) => {
     return(
         <ViewContainer className="ticket-view-container">
             <InfoContainer className="ticket-info-container">
@@ -54,11 +46,9 @@ const TicketView = ({ticket}) => {
             </InfoContainer>
             <CurrentStatusContainer className="ticket-current-status-container">
                 <TextEditorContainer className="ticket-text-editor-container">
-                    <TextEditor />
+                    <TextEditor onSubmitUpdateForm = {onSubmitUpdateForm} />
                 </TextEditorContainer>
-                <UpdatesContainer className="ticket-updates-container">
-
-                </UpdatesContainer>
+                <TicketUpdateList ticketUpdates={ticket.updates} />
             </CurrentStatusContainer>
         </ViewContainer>
     )

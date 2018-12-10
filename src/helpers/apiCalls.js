@@ -33,4 +33,19 @@ export const individualTicketLoad = async(token, reference) => {
         .then((response) => response.json());
 };
 
+export const updateTicket = async(token, ticket) => {
+    const payload = {
+        ticket
+    };
+    return fetch(localhostServer + ticketEndPoint + `/${ticket.reference}`, {
+        method: 'PUT',
+        body: JSON.stringify(payload),
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+
+    })
+        .then((response) => response.json());
+    };
 

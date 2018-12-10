@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 //Components
 import TicketView from './components/TicketView';
 //Helpers
-import { individualTicketLoad } from '../../helpers/apiCalls';
+import { individualTicketLoad, updateTicket } from '../../helpers/apiCalls';
+import { dateGrabber } from '../../helpers/ticketHelper';
 //Redux
 import { connect } from 'react-redux';
 import { loadTicket, removeTicket  } from '../../redux/actions/currentTicket_actions';
@@ -11,6 +12,11 @@ import { loadTicket, removeTicket  } from '../../redux/actions/currentTicket_act
 
 
 class TicketContainer extends Component {
+    constructor(props) {
+        super(props);
+        this.onSubmitUpdateForm = this.onSubmitUpdateForm.bind(this);
+    }
+
     componentDidMount() {
         individualTicketLoad(this.props.token, this.props.reference)
             .then((res) => {
@@ -26,8 +32,32 @@ class TicketContainer extends Component {
         this.props.dispatch(removeTicket());
     }
 
+    onSubmitUpdateForm(event) {
+        event.preventDefault();
+        //Copying the ticket
+        const newUpdate = {
+            date: dateGrabber(),
+            text: event.target.update.value
+        }
+        //Adding the update
+        const newTicket = Object.assign({lastUpdate: dateGrabber()}, this.props.ticket);
+        newTicket.updates.push(newUpdate);
+        //Api call
+        updateTicket(this.props.token, newTicket)
+            .then(() => {
+                this.initialTicketLoad(newTicket)
+            });
+    }
+
     render() {
-        return <TicketView ticket={this.props.ticket}/>
+        if (this.props.ticket) {
+            return <TicketView 
+                    ticket={this.props.ticket}
+                    onSubmitUpdateForm = {this.onSubmitUpdateForm}
+                />
+        } else {
+            return <h1>LOADING</h1>
+        }
     }
 }
 
