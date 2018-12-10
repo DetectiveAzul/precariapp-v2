@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 //Components
-
+import TicketView from './components/TicketView';
 //Helpers
 import { individualTicketLoad } from '../../helpers/apiCalls';
 //Redux
 import { connect } from 'react-redux';
 import { loadTicket, removeTicket  } from '../../redux/actions/currentTicket_actions';
+
+//Styles
+
 
 class TicketContainer extends Component {
     componentDidMount() {
@@ -23,11 +26,8 @@ class TicketContainer extends Component {
         this.props.dispatch(removeTicket());
     }
 
-
-
     render() {
-        console.log('Console log at render', this.props.ticket);
-        return <h1>Estoy en TicketContainer id {this.props.reference}</h1>
+        return <TicketView ticket={this.props.ticket}/>
     }
 }
 

@@ -7,6 +7,8 @@ import DashboardContainer from './containers/dashboard/DashboardContainer';
 import TicketContainer from './containers/ticketView/TicketContainer';
 import NoFound from './containers/NoFound';
 import background from './img/login-background.jpg';
+//Other
+import './Router.css';
 
 const GlobalCSSContainer = styled.div`
     height: 100vh;
@@ -16,15 +18,18 @@ const GlobalCSSContainer = styled.div`
     background-image: url(${background});
     background-position: center;
     min-width: 600px;
+    display: flex;
+    flex-direction: column;
 `
 
 class App extends Component {
     render() {
         return(
-            <GlobalCSSContainer className="App">
+            <GlobalCSSContainer className="App-global">
                 <NavContainer cookies={this.props.cookies} />
-                <Router>   
+                <Router className="router">   
                     <DashboardContainer path="/"/>
+                    <NoFound path="/ticket/new" />
                     <TicketContainer path="/ticket/:reference"/>
                     <NoFound default />
                 </Router>
