@@ -23,4 +23,14 @@ export const initialTicketLoad = async (token) => {
 
 };
 
+export const individualTicketLoad = async(token, reference) => {
+    return fetch(localhostServer + ticketEndPoint + `/${reference}`, {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    })
+        .then((response) => response.json());
+};
+
 
