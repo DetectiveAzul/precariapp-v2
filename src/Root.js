@@ -19,12 +19,13 @@ class Root extends Component {
     const admin = this.props.cookies.get('admin');
     const session = this.props.cookies.get('session');
     if (admin && session) {
+      this.props.dispatch(addToken(session));
       this.props.dispatch(
         logIn({
           email: admin
         })
       );
-      this.props.dispatch(addToken(session));
+      
     }
   }
 

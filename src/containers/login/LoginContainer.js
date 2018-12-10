@@ -24,8 +24,8 @@ class LoginContainer extends Component {
     postLogIn(credentials).then(res => {
       if (res.status === 'success') {
         this.setCookies(credentials, res.token);
-        this.props.dispatch(logIn(credentials));
         this.props.dispatch(addToken(res.token));
+        this.props.dispatch(logIn(credentials));
       } else {
         this.props.dispatch(authFail());
       }
