@@ -14,15 +14,24 @@ const NavContainer = styled.nav`
     font-size: 15px;
 `
 
+const LinkContainer = styled.div`
+`
+
 
 
 const NavBar = ({userLoggingOut}) => {
     return(
         <NavContainer>
-            <NavLink 
-                path="/"
-                name="Dashboard"
-            />
+            <LinkContainer>
+                <NavLink 
+                        path="/"
+                        name="Dashboard"
+                    />
+                    <NavLink
+                        path="/ticket/new"
+                        name="Add Ticket"
+                    />
+            </LinkContainer>
             <LogOutButton onClick={userLoggingOut} />
         </NavContainer>
     );
