@@ -52,7 +52,7 @@ const createOption = (array, className) => {
     return array.map((value, index) => {
             return <OptionField key={index} className={`ticket-${className}-cell`} value={value}>{value}</OptionField>
     })
-} 
+}   
 
 const InfoView = ({ticket, onSubmitInfoForm}) => {
     return(

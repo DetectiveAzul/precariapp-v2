@@ -1,5 +1,4 @@
 //TODO: This ticket needs refactoring!! O___O
-
 import React, { Component } from 'react';
 //Components
 import TicketView from './components/TicketView';
@@ -10,7 +9,6 @@ import { dateGrabber } from '../../helpers/ticketHelper';
 import { connect } from 'react-redux';
 import { loadTicket, removeTicket  } from '../../redux/actions/currentTicket_actions';
 
-//Styles
 
 
 class TicketContainer extends Component {
@@ -95,7 +93,6 @@ class TicketContainer extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    //HERE I SHOULD LOAD JUST THE ONLY TICKET I NEED AS A PROP
     return {
       token: state.token,
       reference: ownProps.reference,
