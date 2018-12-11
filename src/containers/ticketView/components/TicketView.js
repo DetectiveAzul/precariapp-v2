@@ -3,6 +3,7 @@ import styled from 'styled-components';
 //Components
 import TextEditor from './TextEditor';
 import TicketUpdateList from './TicketUpdateList';
+import InfoView from './InfoView';
 
 //Styles
 const ViewContainer = styled.div`
@@ -12,13 +13,6 @@ const ViewContainer = styled.div`
     flex-direction: column;
     margin: 10px;
     flex: 1;
-`;
-
-const InfoContainer = styled.div`
-    flex: 0.5;
-    margin: 5px;
-    background-color: rgb(255,250,250, 0.75);
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
 `;
 
 const CurrentStatusContainer = styled.div`
@@ -51,9 +45,7 @@ const UpdatesContainer = styled.div`
 const TicketView = ({ticket, onSubmitUpdateForm }) => {
     return(
         <ViewContainer className="ticket-view-container">
-            <InfoContainer className="ticket-info-container">
-                Info
-            </InfoContainer>
+            <InfoView ticket={ticket} />
             <CurrentStatusContainer className="ticket-current-status-container">
                 <TextEditorContainer className="ticket-text-editor-container">
                     <TextEditor onSubmitUpdateForm = {onSubmitUpdateForm} />

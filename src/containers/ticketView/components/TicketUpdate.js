@@ -12,15 +12,18 @@ UpdateContainer = styled(UpdateContainer)`
   background-color: ${props => props.odd ? 'rgba(204, 204, 204, 0.9)': 'rgba(153, 153, 153, 0.9)' }
 `
 
-const Date = styled.p`
+const Date = styled.div`
     font-style: italic;
     flex: 0.5;
     padding: 1px;
 `
 
-const Text = styled.p`
+const Text = styled.div`
     flex: 1.5;
     padding: 1px;
+`
+
+const Separator = styled.hr`
 `
 
 const TicketUpdate = ({odd, update}) => {
@@ -29,8 +32,9 @@ const TicketUpdate = ({odd, update}) => {
         className="ticket-update"
         odd={odd}
     >
-        <Date>{update.date}</Date>
-        <Text>{update.text} </Text>
+        <Date className="date-div">{update.date}</Date>
+        <Separator className="date-text-break" />
+        <Text className="text-div">{update.text} </Text>
     </UpdateContainer>
     )
 }

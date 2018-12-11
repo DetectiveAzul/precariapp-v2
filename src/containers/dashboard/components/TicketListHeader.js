@@ -29,7 +29,7 @@ const TicketListHeader = () => {
             <MediumCell className="solicitor-header">Solicitor</MediumCell>
             <MediumCell className="subject-header">Subject</MediumCell>
             <MediumCell className="category-header">Category</MediumCell>
-            <MediumCell className="category-header">Assigned</MediumCell>
+            <MediumCell className="assigned-header">Assigned</MediumCell>
             <SmallCell className="date-opened-header">Opened</SmallCell>
         </Row>
     )

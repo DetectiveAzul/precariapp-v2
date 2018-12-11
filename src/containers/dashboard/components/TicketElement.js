@@ -40,7 +40,7 @@ const TicketElement = ({odd, reference, lastUpdate, status, solicitor, subject, 
             <MediumCell className="solicitor-cell">{solicitor}</MediumCell>
             <MediumCell className="subject-cell">{subject}</MediumCell>
             <MediumCell className="category-cell">{category}</MediumCell>
-            <MediumCell className="category-cell">{assigned}</MediumCell>
+            <MediumCell className="assigned-cell">{assigned}</MediumCell>
             <SmallCell className="date-opened-cell">{opened}</SmallCell>
         </Row>
     )
