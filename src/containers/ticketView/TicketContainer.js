@@ -47,7 +47,11 @@ class TicketContainer extends Component {
             .then(() => {
                 this.initialTicketLoad(newTicket)
             });
+        //Empty textbox
+        event.target.update.value = "";
     }
+
+
 
     render() {
         if (this.props.ticket) {
