@@ -15,6 +15,14 @@ const ViewContainer = styled.div`
     flex: 1;
 `;
 
+const InfoContainer = styled.div`
+    margin: 5px;
+    background-color: rgb(255,250,250, 0.75);
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+    padding: 10px;
+    min-width: 600px;
+`;
+
 const CurrentStatusContainer = styled.div`
     flex: 1.5;
     display: flex;
@@ -42,10 +50,12 @@ const UpdatesContainer = styled.div`
     overflow: scroll;
 `;
 
-const TicketView = ({ticket, onSubmitUpdateForm }) => {
+const TicketView = ({ticket, onSubmitInfoForm, onSubmitUpdateForm }) => {
     return(
         <ViewContainer className="ticket-view-container">
-            <InfoView ticket={ticket} />
+            <InfoContainer className="ticket-info-container">
+                <InfoView ticket={ticket} onSubmitInfoForm={onSubmitInfoForm} />
+            </InfoContainer>
             <CurrentStatusContainer className="ticket-current-status-container">
                 <TextEditorContainer className="ticket-text-editor-container">
                     <TextEditor onSubmitUpdateForm = {onSubmitUpdateForm} />

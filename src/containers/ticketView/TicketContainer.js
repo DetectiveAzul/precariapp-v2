@@ -1,3 +1,5 @@
+//TODO: This ticket needs refactoring!! O___O
+
 import React, { Component } from 'react';
 //Components
 import TicketView from './components/TicketView';
@@ -15,6 +17,7 @@ class TicketContainer extends Component {
     constructor(props) {
         super(props);
         this.onSubmitUpdateForm = this.onSubmitUpdateForm.bind(this);
+        this.onSubmitInfoForm = this.onSubmitInfoForm.bind(this);
     }
 
     componentDidMount() {
@@ -30,6 +33,31 @@ class TicketContainer extends Component {
 
     componentWillUnmount() {
         this.props.dispatch(removeTicket());
+    }
+
+    onSubmitInfoForm(event) {
+        event.preventDefault();
+        //Create ticket
+        const newTicket = Object.assign({}, this.props.ticket, {
+            status: event.target.status.value, 
+            solicitor: event.target.solicitor.value,
+            assigned: event.target.assigned.value,
+            subject: event.target.subject.value,
+            category: event.target.category.value,
+            lastUpdate: dateGrabber()
+        });
+        //Create Update
+        const newUpdate = {
+            date: dateGrabber(),
+            text: 'Updated ticket information'
+        }
+        //Push Update
+        newTicket.updates.push(newUpdate);
+        //Api call
+        updateTicket(this.props.token, newTicket)
+            .then(() => {
+                this.initialTicketLoad(newTicket)
+            });
     }
 
     onSubmitUpdateForm(event) {
@@ -57,6 +85,7 @@ class TicketContainer extends Component {
         if (this.props.ticket) {
             return <TicketView 
                     ticket={this.props.ticket}
+                    onSubmitInfoForm = {this.onSubmitInfoForm}
                     onSubmitUpdateForm = {this.onSubmitUpdateForm}
                 />
         } else {
