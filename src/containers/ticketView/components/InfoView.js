@@ -1,5 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+//Helpers
+import statuses from '../../../helpers/status';
+import categories from '../../../helpers/categories';
 
 const FormContainer = styled.form`
 `;
@@ -45,6 +48,11 @@ const UpdateButton = styled.input`
     margin: 5px;
 `
 
+const createOption = (array, className) => {
+    return array.map((value, index) => {
+            return <OptionField key={index} className={`ticket-${className}-cell`} value={value}>{value}</OptionField>
+    })
+} 
 
 const InfoView = ({ticket, onSubmitInfoForm}) => {
     return(
@@ -60,8 +68,8 @@ const InfoView = ({ticket, onSubmitInfoForm}) => {
 
             <Row className="info-row">
                 <Label>Status:</Label>
-                <Selection name="status">
-                    <OptionField className="ticket-status-cell" value={ticket.status}>{ticket.status}</OptionField>
+                <Selection name="status" defaultValue={ticket.status}>
+                    {createOption(statuses, ticket.status, "status")}
                 </Selection>
 
                 <Label>Solicitor:</Label>
@@ -78,8 +86,8 @@ const InfoView = ({ticket, onSubmitInfoForm}) => {
                 <TextField className="subject-cell" name="subject" defaultValue={ticket.subject} />
 
                 <Label>Category:</Label>
-                <Selection name="category">
-                    <OptionField className="ticket-category-cell" value={ticket.category}>{ticket.category}</OptionField>
+                <Selection defaultValue={ticket.category} name="category">
+                    {createOption(categories, ticket.category, "category")}
                 </Selection>
             </Row>
             <LastRow className="info-row">
