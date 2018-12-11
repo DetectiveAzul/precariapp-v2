@@ -28,19 +28,20 @@ const MediumCell = styled.div`
     text-align: center; 
 `
 
-const TicketElement = ({odd, reference, opened, solicitor, subject, category, assigned, lastUpdate}) => {
+const TicketElement = ({odd, reference, lastUpdate, status, solicitor, subject, category, assigned, opened }) => {
     return(
         <Row 
             onClick={() => { navigate(`/ticket/${reference}`)}} 
             odd={odd} className="ticket-row"
         >
             <SmallCell className="reference-cell">{reference}</SmallCell>
-            <SmallCell className="date-opened-cell">{opened}</SmallCell>
+            <SmallCell className="date-last-cell">{lastUpdate}</SmallCell>
+            <SmallCell className="ticket-status-cell">{status}</SmallCell>
             <MediumCell className="solicitor-cell">{solicitor}</MediumCell>
             <MediumCell className="subject-cell">{subject}</MediumCell>
             <MediumCell className="category-cell">{category}</MediumCell>
             <MediumCell className="category-cell">{assigned}</MediumCell>
-            <SmallCell className="date-last-cell">{lastUpdate}</SmallCell>
+            <SmallCell className="date-opened-cell">{opened}</SmallCell>
         </Row>
     )
 }

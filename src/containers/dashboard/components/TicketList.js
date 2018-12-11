@@ -12,6 +12,7 @@ const TicketList = ({ tickets }) => {
           key={index}
           odd={odd}
           reference={ticket.reference}
+          status={ticket.status}
           opened={ticket.opened}
           solicitor={ticket.solicitor}
           subject={ticket.subject}
