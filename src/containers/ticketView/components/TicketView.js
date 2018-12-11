@@ -38,6 +38,15 @@ const TextEditorContainer = styled.div`
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
 `;
 
+const UpdatesContainer = styled.div`
+    flex: 1;
+    min-width: 275px;
+    margin: 5px;
+    background-color: rgb(255,250,250, 0.75);
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+    overflow: scroll;
+`;
+
 const TicketView = ({ticket, onSubmitUpdateForm }) => {
     return(
         <ViewContainer className="ticket-view-container">
@@ -48,7 +57,9 @@ const TicketView = ({ticket, onSubmitUpdateForm }) => {
                 <TextEditorContainer className="ticket-text-editor-container">
                     <TextEditor onSubmitUpdateForm = {onSubmitUpdateForm} />
                 </TextEditorContainer>
-                <TicketUpdateList ticketUpdates={ticket.updates} />
+                <UpdatesContainer className="ticket-update-list">
+                    <TicketUpdateList ticketUpdates={ticket.updates} />
+                </UpdatesContainer>
             </CurrentStatusContainer>
         </ViewContainer>
     )
