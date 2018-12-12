@@ -73,17 +73,17 @@ const InfoView = ({ticket, onSubmitInfoForm}) => {
                 </Selection>
 
                 <Label>Solicitor:</Label>
-                <TextField className="solicitor-cell" name="solicitor" defaultValue={ticket.solicitor} />
-
+                <TextField required className="solicitor-cell" name="solicitor" defaultValue={ticket.solicitor} />
+                {/* TODO: HARDCODED, ADD LIST OF PIE MEMBERS */}
                 <Label>Assigned to:</Label>
                 <Selection name="assigned">
-                    <OptionField className="assigned-cell" value={ticket.assigned}>{ticket.assigned}</OptionField>
+                    <OptionField required className="assigned-cell" value={"DetectiveAzul"}>DetectiveAzul</OptionField>
                 </Selection>
             </Row>
 
             <Row className="info-row">
                 <Label>Subject:</Label>
-                <TextField className="subject-cell" name="subject" defaultValue={ticket.subject} />
+                <TextField required className="subject-cell" name="subject" defaultValue={ticket.subject} />
 
                 <Label>Category:</Label>
                 <Selection defaultValue={ticket.category} name="category">

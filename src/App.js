@@ -9,6 +9,7 @@ import NoFound from './containers/NoFound';
 import background from './img/login-background.jpg';
 //Other
 import './Router.css';
+import NewTicketContainer from './containers/newTicket/NewTicketContainer';
 
 const GlobalCSSContainer = styled.div`
     height: 100vh;
@@ -29,7 +30,7 @@ class App extends Component {
                 <NavContainer cookies={this.props.cookies} />
                 <Router className="router">   
                     <DashboardContainer path="/"/>
-                    <NoFound path="/ticket/new" />
+                    <NewTicketContainer path="/ticket/new" />
                     <TicketContainer path="/ticket/:reference"/>
                     <NoFound default />
                 </Router>

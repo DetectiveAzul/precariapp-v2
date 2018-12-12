@@ -1,3 +1,5 @@
+//TODO: Refactor!!
+
 export const dateGrabber = () => {
     const date = new Date();
 
@@ -31,7 +33,19 @@ export const referenceDateGrabber = () => {
     let mm = date.getMonth()+1;
     if (mm<10) mm = '0' + mm;
 
-    let yyyy = String(date.getFullYear()).substr(2);
+    let yy = String(date.getFullYear()).substr(2);
 
-    return `${yyyy}${mm}${dd}`;
+    return `${yy}${mm}${dd}`;
 }
+
+export const pad = (number, length) => {
+   
+    var str = '' + number;
+    while (str.length < length) {
+        str = '0' + str;
+    }
+   
+    return str;
+
+}
+
