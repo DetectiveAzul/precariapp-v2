@@ -60,10 +60,10 @@ const InfoView = ({ticket, onSubmitInfoForm}) => {
             <Row className="info-row">
                 <Label>Reference</Label>
                 <TextField className="reference-cell" readOnly value={ticket.reference} />
-                <Label>Opened on:</Label>
-                <TextField className="date-opened-cell" readOnly value={ticket.opened} />
                 <Label>Last update on:</Label>
                 <TextField className="date-last-cell" readOnly value={ticket.lastUpdate} />
+                <Label>Opened on:</Label>
+                <TextField className="date-opened-cell" readOnly value={ticket.opened} />
             </Row>
 
             <Row className="info-row">
